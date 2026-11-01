@@ -12,9 +12,11 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.example.autotelemetry.R
 import org.hamcrest.Matchers.containsString
 import org.junit.After
+import org.junit.Before
 import org.junit.Assert.fail
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -27,6 +29,17 @@ class MainActivityTest {
     private var server: ServerSocket? = null
     private var scenario: ActivityScenario<MainActivity>? = null
     private val executor = Executors.newSingleThreadExecutor()
+
+    @Before
+    fun setUp() {
+        runCatching {
+            val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
+            automation.executeShellCommand("locksettings set-disabled true").close()
+            automation.executeShellCommand("wm dismiss-keyguard").close()
+            automation.executeShellCommand("input keyevent 82").close()
+            automation.executeShellCommand("am broadcast -a android.intent.action.CLOSE_SYSTEM_DIALOGS").close()
+        }
+    }
 
     @After
     fun tearDown() {
