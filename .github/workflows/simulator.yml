@@ -1,0 +1,17 @@
+name: Linux Simulator CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  cpp-build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S vehicle-simulator -B vehicle-simulator/build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build vehicle-simulator/build -j
+      - name: Test
+        run: ctest --test-dir vehicle-simulator/build --output-on-failure

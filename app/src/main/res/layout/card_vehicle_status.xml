@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/card_spacing"
+    app:cardBackgroundColor="@color/surface_card"
+    app:cardCornerRadius="18dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/card_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vehicle status"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/speedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="0.0 km/h"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/metric_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/batteryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Battery: 100%"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/body_size" />
+
+        <TextView
+            android:id="@+id/ambientTempText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Ambient: 20.0°C"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/body_size" />
+
+        <TextView
+            android:id="@+id/vehicleFlagsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Doors closed • Not charging"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/body_size" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
