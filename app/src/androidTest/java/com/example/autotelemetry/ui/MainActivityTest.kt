@@ -6,6 +6,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -41,8 +42,8 @@ class MainActivityTest {
         waitForText(R.id.speedText, "123.4 km/h")
         waitForText(R.id.batteryText, "Battery: 87%")
 
-        onView(withId(R.id.climateUpButton)).perform(click())
-        onView(withId(R.id.climateTempText)).check(matches(withText("22.5°C")))
+        onView(withId(R.id.climateUpButton)).perform(scrollTo(), click())
+        waitForText(R.id.climateTempText, "22.5°C")
     }
 
     @Test
